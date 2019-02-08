@@ -1,0 +1,56 @@
+<div style="text-align:center">
+  <h2 class="jumbotron">Angular Crud Using Firestore</h2>
+</div>
+<div class="row">
+  <div class="col-md-7">
+  
+    <h2>Products List</h2>
+    <ul class="list-group hover" *ngFor="let item of prd">
+
+      <li class="list-group-item ">
+ <i class="fas fa-red-river"> </i> <b>Name:</b> {{item.name}} <b>Price:</b> {{item.price}} <b>Status:</b> {{item.status}}
+          <i (click)="onClick(item)">Edit</i>
+      </li>
+    </ul>
+
+  </div>
+  <div class="col-md-4">
+
+  
+    <form #productForm="ngForm">
+      <div class="form-group">
+        <label>Name</label>
+        <input class="form-control" name="name"  [(ngModel)]="name" placeholder="Product Name"
+          required>
+      </div>
+      <div class="form-group">
+        <label>status</label>
+        <input class="form-control" name="status"  [(ngModel)]="status" placeholder="status">
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <input class="form-control" name="Description"  [(ngModel)]="description" placeholder="Description">
+      </div>
+      <div class="form-group">
+        <label>Price</label>
+        <div class="input-group">
+          <div class="input-group-addon">
+            <i class="fa fa-dollar"></i>
+          </div>
+          <input type="number" class="form-control" name="price" [(ngModel)]="price" placeholder="Price">
+        </div>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn-btn-default" [disabled]="!productForm.valid" (click)="createProduct()"> <i class="fa fa-floppy-o"></i>
+          Submit</button>
+        <button type="button" class="btn-btn-default" (click)="deleteProduct()"><i class="fa fa-trash"></i>Delete</button>
+        <button type="button" class="btn-btn-default" (click)="resetForm()"><i class="fa fa-repeat"></i>Reset</button>
+        <button type="button" class="btn-btn-default" (click)="updateProduct()"><i class="fas fa-pen"></i>Update</button>
+
+
+      </div>
+
+
+    </form>
+  </div>
+</div>
